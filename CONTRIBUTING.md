@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for helping improve Can My Company Afford AI?
+Thank you for helping improve AI ROI Calculator - Is My Company Ready for Enterprise AI?
 
 ## Principles
 

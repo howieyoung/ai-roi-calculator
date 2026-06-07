@@ -1,8 +1,8 @@
 # Agent Guide
 
 This guide defines how a coding agent should inspect, run, modify, and verify
-Can My Company Afford AI? without weakening the model's privacy or research
-boundaries.
+AI ROI Calculator - Is My Company Ready for Enterprise AI? without weakening
+the model's privacy or research boundaries.
 
 ## Operating constraints
 

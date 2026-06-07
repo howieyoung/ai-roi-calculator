@@ -11,7 +11,7 @@
 
   const staticTranslations = {
     "AI ROI CALCULATOR": "AI ROI Calculator",
-    "Can My Company Afford AI?": "我的公司是否準備好全面導入企業 AI？",
+    "Is My Company Ready for Enterprise AI?": "我的公司是否準備好全面導入企業 AI？",
     "Export PDF": "匯出 PDF",
     "Language": "語言",
     "About this research project": "關於本研究專案",
@@ -542,7 +542,7 @@
     document.documentElement.lang = locale;
     const metaContent = localePacks.meta?.[locale] || localePacks.meta?.en;
     document.title =
-      metaContent?.title || "AI ROI Calculator - Can My Company Afford AI?";
+      metaContent?.title || "AI ROI Calculator - Is My Company Ready for Enterprise AI?";
     const meta = document.querySelector('meta[name="description"]');
     if (meta) {
       meta.content =

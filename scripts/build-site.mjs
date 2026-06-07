@@ -8,9 +8,9 @@ const outputDir = resolve(projectRoot, "dist");
 const assetVersion = "20260608-seo-security";
 const siteUrl = "https://www.all4.ai/";
 const siteName = "all4.ai";
-const siteTitle = "AI ROI Calculator - Can My Company Afford AI?";
+const siteTitle = "AI ROI Calculator - Is My Company Ready for Enterprise AI?";
 const siteDescription =
-  "Use a local-first AI ROI calculator to test whether your company can afford AI with RPE, ROI, margin, labor-cost payback, and controlled pilot assumptions.";
+  "Use a local-first AI ROI calculator to test whether your company is ready for enterprise AI adoption with RPE, ROI, margin, labor-cost payback, affordability, and controlled pilot assumptions.";
 const ogImageFile = "og-image-ai-roi.svg";
 const ogImageUrl = `${siteUrl}${ogImageFile}`;
 const gaMeasurementId = "G-H7E29MBGZ6";
@@ -71,7 +71,7 @@ function hostedMetaTags() {
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="author" content="Protico.io" />
     <meta name="application-name" content="AI ROI Calculator" />
-    <meta name="keywords" content="AI ROI calculator, AI ROI, AI adoption ROI, enterprise AI ROI, enterprise AI, 企業 AI, 企業AI, revenue per employee, AI productivity, labor cost payback, AI affordability calculator" />
+    <meta name="keywords" content="AI ROI calculator, AI ROI, AI adoption ROI, enterprise AI ROI, enterprise AI, enterprise AI readiness, 企業 AI, 企業AI, revenue per employee, AI productivity, labor cost payback, AI affordability calculator" />
     <meta name="theme-color" content="#f7f8f6" />
     <link rel="canonical" href="${siteUrl}" />
     <link rel="alternate" hreflang="x-default" href="${siteUrl}" />
@@ -206,8 +206,8 @@ function ogImageSvg() {
   <rect x="64" y="64" width="1072" height="502" rx="28" fill="#ffffff" stroke="#cdd2cf" stroke-width="3"/>
   <rect x="64" y="64" width="18" height="502" fill="#2f8a63"/>
   <text x="118" y="148" fill="#2f8a63" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800" letter-spacing="4">AI ROI CALCULATOR</text>
-  <text x="118" y="248" fill="#181b1a" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="900">Can My Company</text>
-  <text x="118" y="332" fill="#181b1a" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="900">Afford AI?</text>
+  <text x="118" y="248" fill="#181b1a" font-family="Inter, Arial, sans-serif" font-size="68" font-weight="900">Is My Company Ready</text>
+  <text x="118" y="332" fill="#181b1a" font-family="Inter, Arial, sans-serif" font-size="68" font-weight="900">for Enterprise AI?</text>
   <text x="118" y="415" fill="#5f6864" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="650">AI ROI · RPE · margins · labor-cost payback · controlled pilots</text>
   <text x="118" y="502" fill="#181b1a" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800">all4.ai</text>
   <circle cx="1014" cy="190" r="70" fill="#e8f4ee" stroke="#b9e0d0" stroke-width="4"/>

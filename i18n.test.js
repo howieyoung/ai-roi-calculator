@@ -72,8 +72,29 @@ test("Traditional Chinese title targets enterprise AI readiness", () => {
   const { localePacks } = loadI18n();
   const html = fs.readFileSync("./i18n.js", "utf8");
   assert.match(html, /我的公司是否準備好全面導入企業 AI？/);
+  assert.match(html, /Is My Company Ready for Enterprise AI\?/);
   assert.match(localePacks.meta["zh-TW"].title, /全面導入企業 AI/);
   assert.match(localePacks.meta["zh-TW"].description, /企業 AI/);
+});
+
+test("supported locale titles target enterprise AI readiness", () => {
+  const { localePacks } = loadI18n();
+  assert.match(localePacks.meta.en.title, /Enterprise AI/);
+  assert.match(localePacks.meta.ja.title, /エンタープライズAI/);
+  assert.match(localePacks.meta.fr.title, /IA d’entreprise/);
+  assert.match(localePacks.meta.es.title, /IA empresarial/);
+  assert.equal(
+    localePacks.static.ja["Is My Company Ready for Enterprise AI?"],
+    "自社はエンタープライズAIの本格導入に向けて準備できているか？"
+  );
+  assert.equal(
+    localePacks.static.fr["Is My Company Ready for Enterprise AI?"],
+    "Mon entreprise est-elle prête pour l’IA d’entreprise ?"
+  );
+  assert.equal(
+    localePacks.static.es["Is My Company Ready for Enterprise AI?"],
+    "¿Está mi empresa preparada para adoptar IA empresarial?"
+  );
 });
 
 test("HTML loads i18n before application rendering and exposes scalable language selection", () => {
@@ -186,7 +207,8 @@ test("PDF export uses the browser print workflow and print-only report layout", 
 
 test("the public title, source link, and hosted-service disclosure are present", () => {
   const html = fs.readFileSync("./index.html", "utf8");
-  assert.match(html, /<title>AI ROI Calculator - Can My Company Afford AI\?<\/title>/);
+  assert.match(html, /<title>AI ROI Calculator - Is My Company Ready for Enterprise AI\?<\/title>/);
+  assert.match(html, /Is My Company Ready for Enterprise AI\?/);
   assert.match(html, /AI ROI CALCULATOR/);
   assert.doesNotMatch(html, /AI ORGANIZATION ECONOMICS/);
   assert.match(html, /https:\/\/protico\.io/);
@@ -211,12 +233,12 @@ test("hosted build output injects SEO metadata, analytics, and security headers"
   const ogImage = fs.readFileSync("./dist/og-image.svg", "utf8");
   const versionedOgImage = fs.readFileSync("./dist/og-image-ai-roi.svg", "utf8");
 
-  assert.match(html, /<title>AI ROI Calculator - Can My Company Afford AI\?<\/title>/);
+  assert.match(html, /<title>AI ROI Calculator - Is My Company Ready for Enterprise AI\?<\/title>/);
   assert.doesNotMatch(html, /AI Organization Economics Calculator/);
   assert.match(html, /<link rel="canonical" href="https:\/\/www\.all4\.ai\/" \/>/);
-  assert.match(html, /property="og:title" content="AI ROI Calculator - Can My Company Afford AI\?"/);
+  assert.match(html, /property="og:title" content="AI ROI Calculator - Is My Company Ready for Enterprise AI\?"/);
   assert.match(html, /name="application-name" content="AI ROI Calculator"/);
-  assert.match(html, /"name":"AI ROI Calculator - Can My Company Afford AI\?"/);
+  assert.match(html, /"name":"AI ROI Calculator - Is My Company Ready for Enterprise AI\?"/);
   assert.match(html, /AI ROI calculator preview/);
   assert.match(html, /AI ROI calculator/);
   assert.match(html, /企業 AI/);
@@ -247,9 +269,9 @@ test("hosted build output injects SEO metadata, analytics, and security headers"
   assert.match(robots, /User-agent: \*/);
   assert.match(robots, /Sitemap: https:\/\/www\.all4\.ai\/sitemap\.xml/);
   assert.match(sitemap, /<loc>https:\/\/www\.all4\.ai\/<\/loc>/);
-  assert.match(ogImage, /AI ROI Calculator - Can My Company Afford AI\?/);
+  assert.match(ogImage, /AI ROI Calculator - Is My Company Ready for Enterprise AI\?/);
   assert.match(ogImage, /AI ROI CALCULATOR/);
-  assert.match(versionedOgImage, /AI ROI Calculator - Can My Company Afford AI\?/);
+  assert.match(versionedOgImage, /AI ROI Calculator - Is My Company Ready for Enterprise AI\?/);
   assert.match(versionedOgImage, /AI ROI CALCULATOR/);
 });
 

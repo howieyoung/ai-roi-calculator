@@ -3,7 +3,7 @@
 
   const commonStatic = {
     ja: {
-      "Can My Company Afford AI?": "自社は AI を導入する余力があるか？",
+      "Is My Company Ready for Enterprise AI?": "自社はエンタープライズAIの本格導入に向けて準備できているか？",
       "AI ROI CALCULATOR": "AI ROI Calculator",
       "Export PDF": "PDF を出力",
       "Language": "言語",
@@ -184,7 +184,7 @@
       "Input example": "入力例",
     },
     fr: {
-      "Can My Company Afford AI?": "Mon entreprise peut-elle se permettre l’IA ?",
+      "Is My Company Ready for Enterprise AI?": "Mon entreprise est-elle prête pour l’IA d’entreprise ?",
       "AI ROI CALCULATOR": "AI ROI Calculator",
       "Export PDF": "Exporter en PDF",
       "Language": "Langue",
@@ -365,7 +365,7 @@
       "Input example": "Exemple de saisie",
     },
     es: {
-      "Can My Company Afford AI?": "¿Puede mi empresa permitirse la IA?",
+      "Is My Company Ready for Enterprise AI?": "¿Está mi empresa preparada para adoptar IA empresarial?",
       "AI ROI CALCULATOR": "AI ROI Calculator",
       "Export PDF": "Exportar PDF",
       "Language": "Idioma",
@@ -1175,24 +1175,24 @@
     genericHelp,
     meta: {
       en: {
-        title: "AI ROI Calculator - Can My Company Afford AI?",
-        description: "A local-first, open-source AI ROI calculator for exploring whether an organization can economically afford AI.",
+        title: "AI ROI Calculator - Is My Company Ready for Enterprise AI?",
+        description: "A local-first, open-source AI ROI calculator for exploring whether an organization is ready for enterprise AI adoption.",
       },
       "zh-TW": {
         title: "AI ROI Calculator - 我的公司是否準備好全面導入企業 AI？",
         description: "一套在本機執行的開源 AI ROI 試算器，用於探索公司是否準備好全面導入企業 AI，並研究營收、毛利、人力成本與受控試點條件。",
       },
       ja: {
-        title: "AI ROI Calculator - 自社は AI を導入する余力があるか？",
-        description: "企業が AI を経済的に導入できるかを検証するローカル優先のオープンソース AI ROI 計算ツール。",
+        title: "AI ROI Calculator - 自社はエンタープライズAIの本格導入に向けて準備できているか？",
+        description: "企業がエンタープライズAIを本格導入する準備ができているかを検証するローカル優先のオープンソース AI ROI 計算ツール。",
       },
       fr: {
-        title: "Calculateur ROI IA - Mon entreprise peut-elle se permettre l’IA ?",
-        description: "Un calculateur de ROI IA open source et local pour étudier si une organisation peut économiquement se permettre l’IA.",
+        title: "Calculateur ROI IA - Mon entreprise est-elle prête pour l’IA d’entreprise ?",
+        description: "Un calculateur de ROI IA open source et local pour étudier si une organisation est prête à adopter l’IA d’entreprise.",
       },
       es: {
-        title: "Calculadora de ROI de IA - ¿Puede mi empresa permitirse la IA?",
-        description: "Una calculadora local y de código abierto de ROI de IA para estudiar si una organización puede permitirse económicamente la IA.",
+        title: "Calculadora de ROI de IA - ¿Está mi empresa preparada para adoptar IA empresarial?",
+        description: "Una calculadora local y de código abierto de ROI de IA para estudiar si una organización está preparada para adoptar IA empresarial.",
       },
     },
   };

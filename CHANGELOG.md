@@ -2,7 +2,7 @@
 
 ## 0.3.0 - 2026-06-07
 
-- Renamed the public product title to Can My Company Afford AI?
+- Retargeted the public product title to AI ROI Calculator - Is My Company Ready for Enterprise AI?
 - Replaced JSON scenario export with a local browser PDF report workflow
 - Added Japanese, French, and Spanish interface locale packs
 - Added localized dynamic analysis, verdicts, warnings, presets, and parameter help

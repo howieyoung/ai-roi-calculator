@@ -1,6 +1,6 @@
-# AI ROI Calculator - Can My Company Afford AI?
+# AI ROI Calculator - Is My Company Ready for Enterprise AI?
 
-> A local-first, open-source AI ROI calculator for exploring when enterprise AI may improve economics, when it may increase losses, and when financial pressure may be incorrectly attributed to workforce capacity.
+> A local-first, open-source AI ROI calculator for exploring whether a company is ready for enterprise AI adoption, when AI may improve economics, when it may increase losses, and when financial pressure may be incorrectly attributed to workforce capacity.
 
 [Live calculator](https://www.all4.ai/) · [Traditional Chinese documentation](./README.zh-TW.md) · [Model specification](./docs/MODEL.md) · [Agent guide](./docs/AGENT_GUIDE.md) · [Contributing](./CONTRIBUTING.md) · [Security and privacy](./SECURITY.md)
 
