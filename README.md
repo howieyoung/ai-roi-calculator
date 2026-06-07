@@ -2,7 +2,7 @@
 
 > A local-first, open-source research model for exploring when enterprise AI may improve economics, when it may increase losses, and when financial pressure may be incorrectly attributed to workforce capacity.
 
-[Live calculator](https://ai-efficiency-calculator.pages.dev/) · [Traditional Chinese documentation](./README.zh-TW.md) · [Model specification](./docs/MODEL.md) · [Agent guide](./docs/AGENT_GUIDE.md) · [Contributing](./CONTRIBUTING.md) · [Security and privacy](./SECURITY.md)
+[Live calculator](https://www.all4.ai/) · [Traditional Chinese documentation](./README.zh-TW.md) · [Model specification](./docs/MODEL.md) · [Agent guide](./docs/AGENT_GUIDE.md) · [Contributing](./CONTRIBUTING.md) · [Security and privacy](./SECURITY.md)
 
 Created by [Protico.io](https://protico.io) and released under the MIT License.
 
@@ -87,7 +87,8 @@ Source** to **GitHub Actions** in the repository.
 
 ## Deploy to Cloudflare Pages
 
-The production calculator is hosted at
+The production calculator is hosted at [www.all4.ai](https://www.all4.ai/)
+with the Cloudflare Pages fallback at
 [ai-efficiency-calculator.pages.dev](https://ai-efficiency-calculator.pages.dev/).
 Build output contains only the browser assets required by the application:
 
