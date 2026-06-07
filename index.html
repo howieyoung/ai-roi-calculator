@@ -1,0 +1,962 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A local-first, open-source research calculator for exploring AI productivity, enterprise economics, and workforce scenarios."
+    />
+    <link rel="icon" href="data:," />
+    <title>Can My Company Afford AI?</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="title-block">
+        <p class="eyebrow">AI ORGANIZATION ECONOMICS</p>
+        <div class="title-line">
+          <h1>Can My Company Afford AI?</h1>
+          <button
+            class="title-help-button"
+            id="research-info-button"
+            type="button"
+            title="About this research project"
+            aria-label="About this research project"
+          >
+            ?
+          </button>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <button class="button button-secondary" id="export-button" type="button">
+          Export PDF
+        </button>
+        <label class="language-picker">
+          <span class="visually-hidden">Language</span>
+          <select id="language-select" aria-label="Language"></select>
+        </label>
+        <button
+          class="icon-button"
+          id="reset-button"
+          type="button"
+          title="Reset current scenario"
+          aria-label="Reset current scenario"
+        >
+          ↻
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="preset-band" id="preset-band" aria-labelledby="preset-title">
+        <button
+          class="preset-toggle"
+          id="preset-toggle"
+          type="button"
+          aria-expanded="true"
+          aria-controls="preset-content"
+        >
+          <span class="preset-toggle-heading">
+            <span class="section-kicker">SCENARIO BASELINE</span>
+            <strong id="preset-title">Choose a company example</strong>
+            <span
+              class="preset-collapsed-context"
+              id="preset-collapsed-context"
+              aria-hidden="true"
+            >
+              <span class="preset-collapsed-name" id="preset-collapsed-name"></span>
+              <span
+                class="preset-collapsed-industry"
+                id="preset-collapsed-industry"
+              ></span>
+            </span>
+          </span>
+          <span class="preset-toggle-state" id="preset-toggle-state">Collapse</span>
+        </button>
+        <div class="preset-content" id="preset-content">
+          <div class="preset-controls">
+          <label class="field compact-field">
+            <span>Company scenario</span>
+            <select id="preset-select" data-input="preset">
+              <option value="custom">Custom company · Unclassified</option>
+              <optgroup label="SMB synthetic scenarios">
+                <option value="smbEcommerce">Retail e-commerce · 75 employees</option>
+                <option value="smallRestaurant">Independent restaurant · 14 employees</option>
+                <option value="twHardwareSmb">Taiwan hardware manufacturer · 750 employees</option>
+              </optgroup>
+              <optgroup label="Advertising and digital platforms">
+                <option value="meta">Meta · Advertising and social platform</option>
+                <option value="google">Google / Alphabet · Ads and cloud platform</option>
+              </optgroup>
+              <optgroup label="SaaS and cloud">
+                <option value="salesforce">Salesforce · Enterprise SaaS</option>
+                <option value="cloudflare">Cloudflare · SaaS / cloud infrastructure</option>
+                <option value="aiNative">AI-native startup · Synthetic SaaS</option>
+              </optgroup>
+              <optgroup label="Hardware, semiconductors, and manufacturing">
+                <option value="tsmc">TSMC · Semiconductor manufacturing</option>
+                <option value="nvidia">NVIDIA · AI infrastructure</option>
+                <option value="apple">Apple · Consumer hardware and services</option>
+                <option value="tesla">Tesla · Automotive and energy</option>
+              </optgroup>
+              <optgroup label="Marketplaces and multi-business platforms">
+                <option value="amazon">Amazon · Commerce, AWS, and logistics</option>
+                <option value="airbnb">Airbnb · Travel marketplace</option>
+                <option value="uber">Uber · Mobility and delivery marketplace</option>
+              </optgroup>
+              <optgroup label="Subscription media">
+                <option value="netflix">Netflix · Subscription video</option>
+                <option value="spotify">Spotify · Subscription audio</option>
+              </optgroup>
+            </select>
+          </label>
+          <div class="preset-note" id="preset-note"></div>
+          <div class="preset-reference" id="preset-reference">
+            <span class="industry-chip" id="preset-industry"></span>
+            <span id="preset-margin-reference"></span>
+          </div>
+          <p class="preset-library-note">
+            A public company's gross margin can be a research starting point, not an industry
+            standard. Delivery costs, channel fees, hardware, cloud infrastructure, and
+            accounting classifications differ materially.
+          </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="print-report-header" id="print-report-header" aria-hidden="true">
+        <p class="section-kicker">AI ECONOMICS RESEARCH REPORT</p>
+        <h1>Can My Company Afford AI?</h1>
+        <div class="print-report-meta">
+          <strong id="print-scenario-name"></strong>
+          <span id="print-scenario-industry"></span>
+          <span id="print-generated-at"></span>
+        </div>
+        <p>
+          This report is a deterministic sensitivity analysis, not a forecast or financial,
+          legal, HR, or workforce recommendation. Replace default assumptions with measured
+          internal task, quality, demand, and cost evidence.
+        </p>
+      </section>
+
+      <div class="workspace">
+        <aside
+          class="input-panel"
+          id="mobile-inputs-panel"
+          role="tabpanel"
+          aria-labelledby="mobile-inputs-tab"
+          aria-label="Model inputs"
+        >
+          <nav class="section-nav" aria-label="Input categories">
+            <button class="section-nav-button active" data-scroll-target="company-inputs" type="button">
+              Company
+            </button>
+            <button class="section-nav-button" data-scroll-target="ai-inputs" type="button">
+              AI
+            </button>
+            <button class="section-nav-button" data-scroll-target="strategy-inputs" type="button">
+              Strategy
+            </button>
+          </nav>
+
+          <section
+            class="input-section"
+            id="company-inputs"
+            data-mobile-input-section="company"
+          >
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">01</p>
+                <h2>Company baseline</h2>
+              </div>
+              <span class="status-chip">Annual</span>
+            </div>
+
+            <div class="field-grid">
+              <label class="field">
+                <span>Primary labor market</span>
+                <select id="country" data-input="country">
+                  <option value="TW">Taiwan</option>
+                  <option value="US">United States</option>
+                  <option value="JP">Japan</option>
+                  <option value="SG">Singapore</option>
+                  <option value="GB">United Kingdom</option>
+                  <option value="DE">Germany</option>
+                  <option value="IN">India</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Employees</span>
+                <div class="input-with-unit">
+                  <input id="employees" data-input="employees" type="number" min="1" step="1" />
+                  <span>FTE</span>
+                </div>
+              </label>
+
+              <label class="field">
+                <span>Annual revenue</span>
+                <div class="input-with-unit">
+                  <span>US$</span>
+                  <input id="revenue" data-input="revenue" type="number" min="0" step="0.1" />
+                  <span>M</span>
+                </div>
+              </label>
+
+              <label class="field">
+                <span>Operating profit</span>
+                <div class="input-with-unit">
+                  <span>US$</span>
+                  <input id="operatingProfit" data-input="operatingProfit" type="number" step="0.1" />
+                  <span>M</span>
+                </div>
+              </label>
+
+              <label class="field">
+                <span>Gross margin</span>
+                <div class="input-with-unit">
+                  <input id="grossMargin" data-input="grossMargin" type="number" min="0" max="100" step="0.1" />
+                  <span>%</span>
+                </div>
+              </label>
+
+              <label class="field">
+                <span>Baseline revenue growth</span>
+                <div class="input-with-unit">
+                  <input id="historicalGrowth" data-input="historicalGrowth" type="number" min="-100" max="500" step="0.1" />
+                  <span>%</span>
+                </div>
+              </label>
+
+              <label class="field span-2">
+                <span>Average fully loaded labor cost</span>
+                <div class="input-with-unit">
+                  <span>US$</span>
+                  <input id="salary" data-input="salary" type="number" min="0" step="1000" />
+                  <span>/ FTE-year</span>
+                </div>
+                <small id="salary-market-note"></small>
+              </label>
+            </div>
+          </section>
+
+          <section
+            class="input-section"
+            id="ai-inputs"
+            data-mobile-input-section="ai"
+          >
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">02</p>
+                <h2>AI operating assumptions</h2>
+              </div>
+              <span class="status-chip status-chip-green">Editable</span>
+            </div>
+
+            <div class="slider-list">
+              <label class="slider-field">
+                <span>
+                  <b>Task exposure to AI</b>
+                  <output id="exposure-output"></output>
+                </span>
+                <input id="exposure" data-input="exposure" type="range" min="0" max="100" step="1" />
+              </label>
+
+              <label class="slider-field">
+                <span>
+                  <b>Gross speed uplift on exposed tasks</b>
+                  <output id="efficiency-output"></output>
+                </span>
+                <input id="efficiency" data-input="efficiency" type="range" min="0" max="200" step="1" />
+              </label>
+
+              <label class="slider-field">
+                <span>
+                  <b>Effective task adoption</b>
+                  <output id="adoption-output"></output>
+                </span>
+                <input id="adoption" data-input="adoption" type="range" min="0" max="100" step="1" />
+              </label>
+
+              <label class="slider-field">
+                <span>
+                  <b>Output value retention</b>
+                  <output id="quality-output"></output>
+                </span>
+                <input id="quality" data-input="quality" type="range" min="0" max="100" step="1" />
+              </label>
+
+              <label class="slider-field">
+                <span>
+                  <b>Human review overhead</b>
+                  <output id="reviewOverhead-output"></output>
+                </span>
+                <input id="reviewOverhead" data-input="reviewOverhead" type="range" min="0" max="100" step="1" />
+              </label>
+
+              <label class="slider-field">
+                <span>
+                  <b>Correction and retry overhead</b>
+                  <output id="reworkOverhead-output"></output>
+                </span>
+                <input id="reworkOverhead" data-input="reworkOverhead" type="range" min="0" max="100" step="1" />
+              </label>
+
+              <label class="slider-field">
+                <span>
+                  <b>AI administration overhead</b>
+                  <output id="aiOpsOverhead-output"></output>
+                </span>
+                <input id="aiOpsOverhead" data-input="aiOpsOverhead" type="range" min="0" max="100" step="1" />
+              </label>
+            </div>
+
+            <div class="field-grid cost-grid">
+              <label class="field span-2">
+                <span>Annual internal AI cost per employee</span>
+                <div class="input-with-unit">
+                  <span>US$</span>
+                  <input id="aiCostPerEmployee" data-input="aiCostPerEmployee" type="number" min="0" step="100" />
+                  <span>/ FTE-year</span>
+                </div>
+              </label>
+
+              <label class="field">
+                <span>Recurring fixed AI platform cost</span>
+                <div class="input-with-unit">
+                  <span>US$</span>
+                  <input id="fixedAiCost" data-input="fixedAiCost" type="number" min="0" step="0.1" />
+                  <span>M</span>
+                </div>
+              </label>
+
+              <label class="field">
+                <span>One-time transformation cost</span>
+                <div class="input-with-unit">
+                  <span>US$</span>
+                  <input id="transitionCost" data-input="transitionCost" type="number" min="0" step="0.1" />
+                  <span>M</span>
+                </div>
+              </label>
+
+              <label class="field span-2">
+                <span>Transformation amortization period</span>
+                <div class="input-with-unit">
+                  <input id="amortizationYears" data-input="amortizationYears" type="number" min="1" max="10" step="1" />
+                  <span>years</span>
+                </div>
+              </label>
+
+              <label class="field span-2">
+                <span>Product inference cost as % of AI-attributed revenue</span>
+                <div class="input-with-unit">
+                  <input id="productInferenceCostRate" data-input="productInferenceCostRate" type="number" min="0" max="100" step="0.5" />
+                  <span>%</span>
+                </div>
+              </label>
+            </div>
+          </section>
+
+          <section
+            class="input-section"
+            id="strategy-inputs"
+            data-mobile-input-section="strategy"
+          >
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">03</p>
+                <h2>Value realization strategy</h2>
+              </div>
+              <span class="status-chip status-chip-amber">Scenario</span>
+            </div>
+
+            <div class="slider-list">
+              <label class="slider-field">
+                <span>
+                  <b>Released capacity allocated to growth</b>
+                  <output id="redeployShare-output"></output>
+                </span>
+                <input id="redeployShare" data-input="redeployShare" type="range" min="0" max="100" step="1" />
+              </label>
+
+              <label class="slider-field">
+                <span>
+                  <b>Capacity-to-revenue conversion</b>
+                  <output id="revenueConversion-output"></output>
+                </span>
+                <input id="revenueConversion" data-input="revenueConversion" type="range" min="0" max="150" step="1" />
+              </label>
+
+              <label class="slider-field">
+                <span>
+                  <b>Workforce risk buffer</b>
+                  <output id="riskBuffer-output"></output>
+                </span>
+                <input id="riskBuffer" data-input="riskBuffer" type="range" min="0" max="100" step="1" />
+              </label>
+
+              <label class="slider-field">
+                <span>
+                  <b>Share of released time that is structurally automatable</b>
+                  <output id="automationShare-output"></output>
+                </span>
+                <input id="automationShare" data-input="automationShare" type="range" min="0" max="100" step="1" />
+              </label>
+
+              <label class="slider-field">
+                <span>
+                  <b>Year-one value realization</b>
+                  <output id="year1Realization-output"></output>
+                </span>
+                <input id="year1Realization" data-input="year1Realization" type="range" min="0" max="100" step="1" />
+              </label>
+            </div>
+
+            <div class="field-grid">
+              <label class="field">
+                <span>Target operating margin</span>
+                <div class="input-with-unit">
+                  <input id="targetMargin" data-input="targetMargin" type="number" min="-100" max="95" step="0.5" />
+                  <span>%</span>
+                </div>
+              </label>
+
+              <label class="field">
+                <span>Revenue-loss elasticity per 1% workforce change</span>
+                <div class="input-with-unit">
+                  <input id="revenueLossPerCut" data-input="revenueLossPerCut" type="number" min="0" max="5" step="0.05" />
+                  <span>%</span>
+                </div>
+              </label>
+
+              <label class="field span-2">
+                <span>Average one-time workforce transition cost</span>
+                <div class="input-with-unit">
+                  <input id="severanceMonths" data-input="severanceMonths" type="number" min="0" max="36" step="0.5" />
+                  <span>months of labor cost / FTE</span>
+                </div>
+              </label>
+
+              <label class="field">
+                <span>Validated AI demand ceiling</span>
+                <div class="input-with-unit">
+                  <input id="demandCeiling" data-input="demandCeiling" type="number" min="0" max="500" step="1" />
+                  <span>% of current revenue</span>
+                </div>
+              </label>
+
+              <label class="field">
+                <span>Analysis horizon</span>
+                <div class="input-with-unit">
+                  <input id="analysisYears" data-input="analysisYears" type="number" min="1" max="10" step="1" />
+                  <span>years</span>
+                </div>
+              </label>
+
+              <label class="field span-2">
+                <span>Discount rate</span>
+                <div class="input-with-unit">
+                  <input id="discountRate" data-input="discountRate" type="number" min="0" max="100" step="0.5" />
+                  <span>%</span>
+                </div>
+              </label>
+            </div>
+          </section>
+
+          <section
+            class="scenario-section scenario-section-input"
+            data-mobile-input-section="paths"
+          >
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">PATHS TO POSITIVE ECONOMICS</p>
+                <h2>What could improve this scenario?</h2>
+              </div>
+              <span class="status-chip" id="scenario-risk-summary"></span>
+            </div>
+            <p class="scenario-intro">
+              The calculator tests individual and combined changes to identify which measurable
+              assumptions could move the current result toward positive economics. Each path is
+              a sensitivity test, not a promised outcome.
+            </p>
+            <div class="scenario-grid" id="scenario-grid"></div>
+          </section>
+        </aside>
+
+        <section
+          class="results-panel"
+          id="mobile-results-panel"
+          role="tabpanel"
+          aria-labelledby="mobile-results-tab"
+          aria-live="polite"
+        >
+          <div class="result-header">
+            <div>
+              <p class="section-kicker">MODEL OUTPUT</p>
+              <h2 id="scenario-title">Custom company</h2>
+              <span class="result-industry" id="result-industry"></span>
+            </div>
+            <div class="verdict" id="verdict"></div>
+          </div>
+
+          <div class="metric-grid">
+            <article class="metric metric-primary">
+              <span class="output-label">
+                Current RPE
+                <button class="help-trigger output-help" data-help-key="outputCurrentRpe" type="button" aria-label="About current RPE">?</button>
+              </span>
+              <strong id="current-rpe"></strong>
+              <small>Revenue per Employee</small>
+            </article>
+            <article class="metric">
+              <span class="output-label">
+                AI-adjusted RPE
+                <button class="help-trigger output-help" data-help-key="outputProjectedRpe" type="button" aria-label="About AI-adjusted RPE">?</button>
+              </span>
+              <strong id="projected-rpe"></strong>
+              <small id="rpe-change"></small>
+            </article>
+            <article class="metric">
+              <span class="output-label">
+                Steady-state AI ROI
+                <button class="help-trigger output-help" data-help-key="outputAiRoi" type="button" aria-label="About steady-state AI ROI">?</button>
+              </span>
+              <strong id="ai-roi"></strong>
+              <small id="profit-delta"></small>
+            </article>
+            <article class="metric">
+              <span class="output-label">
+                Net productivity change
+                <button class="help-trigger output-help" data-help-key="outputProductivity" type="button" aria-label="About net productivity change">?</button>
+              </span>
+              <strong id="effective-gain"></strong>
+              <small id="equivalent-fte"></small>
+            </article>
+          </div>
+
+          <section class="decision-strip">
+            <div>
+              <span class="output-label">
+                Break-even gross speed uplift
+                <button class="help-trigger output-help" data-help-key="outputBreakEvenEfficiency" type="button" aria-label="About break-even speed uplift">?</button>
+              </span>
+              <strong id="break-even-efficiency"></strong>
+            </div>
+            <div>
+              <span class="output-label">
+                Positive economics size threshold
+                <button class="help-trigger output-help" data-help-key="outputBreakEvenSize" type="button" aria-label="About positive economics size threshold">?</button>
+              </span>
+              <strong id="break-even-size"></strong>
+            </div>
+            <div>
+              <span class="output-label">
+                Additional revenue required
+                <button class="help-trigger output-help" data-help-key="outputRequiredGrowth" type="button" aria-label="About additional revenue required">?</button>
+              </span>
+              <strong id="required-growth"></strong>
+            </div>
+          </section>
+
+          <div class="warning-box mobile-summary-warning" id="model-warning" hidden></div>
+
+          <section
+            class="horizon-section"
+            id="cash-economics"
+            data-mobile-analysis-section="cash"
+          >
+            <div class="section-heading result-section-heading">
+              <div>
+                <p class="section-kicker">MULTI-YEAR CASH ECONOMICS</p>
+                <h2>First-year reality and long-run value</h2>
+              </div>
+            </div>
+            <div class="horizon-grid">
+              <div>
+                <span>Year-one incremental cash flow</span>
+                <strong id="first-year-cash-flow"></strong>
+                <small>Includes the full one-time transformation cash cost</small>
+              </div>
+              <div>
+                <span>Scenario NPV</span>
+                <strong id="scenario-npv"></strong>
+                <small id="scenario-npv-note"></small>
+              </div>
+              <div>
+                <span>Payback</span>
+                <strong id="payback-year"></strong>
+                <small>Based on cumulative undiscounted cash flow</small>
+              </div>
+            </div>
+            <div class="timeline-grid" id="timeline-grid"></div>
+          </section>
+
+          <section
+            class="workforce-section"
+            id="baseline-attribution"
+            data-mobile-analysis-section="attribution"
+          >
+            <div class="section-heading result-section-heading">
+              <div>
+                <p class="section-kicker">BASELINE ATTRIBUTION</p>
+                <h2>Separate existing financial pressure from AI impact</h2>
+              </div>
+            </div>
+            <div class="workforce-grid">
+              <div class="workforce-number">
+                <span class="output-label">
+                  Theoretical released time
+                  <button class="help-trigger output-help" data-help-key="outputReleasableFte" type="button" aria-label="About theoretical released time">?</button>
+                </span>
+                <strong id="capacity-fte"></strong>
+                <small id="capacity-note">Bounded by current FTE</small>
+              </div>
+              <div class="workforce-number">
+                <span class="output-label">
+                  Capacity available for further review
+                  <button class="help-trigger output-help" data-help-key="outputSafeFte" type="button" aria-label="About capacity available for further review">?</button>
+                </span>
+                <strong id="safe-fte"></strong>
+                <small>Released time left after growth use, non-automatable work, and a safety buffer</small>
+              </div>
+              <div class="workforce-number workforce-emphasis">
+                <span class="output-label">
+                  No-AI baseline adjustment
+                  <button class="help-trigger output-help" data-help-key="outputRequiredCuts" type="button" aria-label="About baseline workforce adjustment">?</button>
+                </span>
+                <strong id="baseline-required-adjustment"></strong>
+                <small>Pressure already present without the AI program</small>
+              </div>
+              <div class="workforce-number workforce-emphasis">
+                <span class="output-label">
+                  AI-attributed change
+                  <button class="help-trigger output-help" data-help-key="outputRequiredCuts" type="button" aria-label="About AI-attributed workforce change">?</button>
+                </span>
+                <strong id="ai-attributed-adjustment"></strong>
+                <small id="required-cut-note"></small>
+              </div>
+            </div>
+            <div class="workforce-explainer">
+              <div class="workforce-explainer-heading">
+                <div>
+                  <strong>Why baseline attribution matters</strong>
+                  <p>The model solves the target-margin equation twice: first without AI, then with AI. The difference is the portion that can be associated with the AI scenario rather than pre-existing economics.</p>
+                </div>
+              </div>
+              <div class="workforce-calculation" id="required-cut-breakdown"></div>
+              <p class="workforce-disclaimer">
+                This is a financial stress test, not a workforce recommendation. A valid
+                organization decision requires role-level task evidence, minimum operating
+                capacity, legal review, and observed performance over time.
+              </p>
+            </div>
+          </section>
+
+          <section
+            class="analysis-section"
+            id="research-interpretation"
+            data-mobile-analysis-section="interpretation"
+          >
+            <div class="section-heading result-section-heading">
+              <div>
+                <p class="section-kicker">EXECUTIVE INTERPRETATION</p>
+                <h2>Research interpretation</h2>
+              </div>
+              <span class="status-chip">Generated from inputs</span>
+            </div>
+            <div class="analysis-copy" id="analysis-copy"></div>
+          </section>
+
+          <section
+            class="uncertainty-section"
+            id="uncertainty-analysis"
+            data-mobile-analysis-section="uncertainty"
+          >
+            <div class="section-heading result-section-heading">
+              <div>
+                <p class="section-kicker">UNCERTAINTY RANGE</p>
+                <h2>Conservative, base, and upside assumptions</h2>
+              </div>
+            </div>
+            <p class="scenario-intro">
+              These are deterministic sensitivity cases, not statistical confidence intervals.
+              They vary adoption, speed, review burden, demand conversion, and cost assumptions
+              together to show how fragile a single-point answer may be.
+            </p>
+            <div class="uncertainty-grid" id="uncertainty-grid"></div>
+          </section>
+
+          <section
+            class="chart-section"
+            id="scale-performance-analysis"
+            data-mobile-analysis-section="performance"
+          >
+            <div class="chart-heading">
+              <div>
+                <p class="section-kicker">SCALE × PERFORMANCE</p>
+                <h2>Positive AI economics zone</h2>
+              </div>
+              <div class="legend">
+                <span><i class="legend-negative"></i>Negative</span>
+                <span><i class="legend-neutral"></i>Near break-even</span>
+                <span><i class="legend-positive"></i>Positive</span>
+              </div>
+            </div>
+            <div class="canvas-wrap">
+              <canvas id="positive-zone-chart" aria-label="Annual AI value by company scale and gross task speed uplift"></canvas>
+            </div>
+            <div class="chart-explanation">
+              <strong>How to read this chart</strong>
+              <p>
+                Each cell estimates annual AI economic value at a given company size and gross
+                task speed uplift while holding the remaining assumptions constant. Green is
+                positive, red is negative, and yellow is near break-even. The black point marks
+                the current scenario.
+              </p>
+              <p>
+                This is a sensitivity map, not a forecast. It assumes RPE and cost structure
+                remain constant as the company is scaled and is intended to identify ranges that
+                require deeper validation.
+              </p>
+            </div>
+          </section>
+
+          <section
+            class="chart-section"
+            id="revenue-workforce-tradeoff"
+            data-mobile-analysis-section="tradeoff"
+          >
+            <div class="chart-heading">
+              <div>
+                <p class="section-kicker">TARGET MARGIN</p>
+                <h2>Revenue Growth / FTE Trade-off</h2>
+              </div>
+              <strong class="chart-callout" id="tradeoff-callout"></strong>
+            </div>
+            <div class="canvas-wrap line-chart-wrap">
+              <canvas id="tradeoff-chart" aria-label="Additional revenue growth and modeled workforce adjustment trade-off"></canvas>
+            </div>
+            <div class="chart-explanation">
+              <strong>What the line represents</strong>
+              <p>
+                The X-axis is revenue growth beyond the baseline and modeled AI-attributed
+                revenue. The Y-axis is the minimum modeled workforce adjustment needed to reach
+                the target operating margin.
+              </p>
+              <p>
+                The workforce percentage is a financial pressure value, not an executable
+                recommendation. Compare it with the capacity available for further review and the
+                no-AI baseline before drawing any organizational conclusion.
+              </p>
+            </div>
+          </section>
+
+          <section
+            class="native-section"
+            id="ai-native-benchmark"
+            data-mobile-analysis-section="native"
+          >
+            <div class="section-heading result-section-heading">
+              <div>
+                <p class="section-kicker">AI-NATIVE BENCHMARK</p>
+                <h2>Avoid scaling first and redesigning later</h2>
+              </div>
+            </div>
+            <div class="native-comparison">
+              <div>
+                <span class="output-label">
+                  Legacy scaling headcount
+                  <button class="help-trigger output-help" data-help-key="outputLegacyHeadcount" type="button" aria-label="About legacy scaling headcount">?</button>
+                </span>
+                <strong id="legacy-headcount"></strong>
+              </div>
+              <div class="native-arrow">→</div>
+              <div>
+                <span class="output-label">
+                  AI-native modeled headcount
+                  <button class="help-trigger output-help" data-help-key="outputNativeHeadcount" type="button" aria-label="About AI-native modeled headcount">?</button>
+                </span>
+                <strong id="native-headcount"></strong>
+              </div>
+              <div class="native-saving">
+                <span class="output-label">
+                  Potential hires avoided
+                  <button class="help-trigger output-help" data-help-key="outputAvoidedHires" type="button" aria-label="About potential hires avoided">?</button>
+                </span>
+                <strong id="avoided-hires"></strong>
+              </div>
+            </div>
+            <div class="native-rpe-row">
+              <span class="output-label">
+                Modeled AI-native RPE
+                <button class="help-trigger output-help" data-help-key="outputNativeRpe" type="button" aria-label="About modeled AI-native RPE">?</button>
+              </span>
+              <strong id="native-rpe"></strong>
+              <small id="native-advantage"></small>
+            </div>
+            <div class="benchmark-explanation">
+              <strong>How this benchmark is calculated</strong>
+              <p>
+                Legacy scaling assumes the company maintains current RPE to support modeled
+                future revenue. The AI-native case applies the modeled net productivity change.
+                The difference represents potential future hiring avoided, not a recommendation
+                to change current staffing.
+              </p>
+              <p>
+                This comparison isolates the structural advantage of designing workflows around
+                AI from the beginning. It still assumes sufficient demand, stable quality, and a
+                meaningful current RPE baseline.
+              </p>
+            </div>
+          </section>
+
+          <section
+            class="country-section"
+            id="labor-cost-payback"
+            data-mobile-analysis-section="labor"
+          >
+            <div class="section-heading result-section-heading">
+              <div>
+                <p class="section-kicker">LABOR-COST PAYBACK</p>
+                <h2>AI labor-value payback by market</h2>
+              </div>
+            </div>
+            <div class="country-explanation">
+              <strong>How much local labor-cost value corresponds to each US$1 of AI cost?</strong>
+              <p>
+                The same AI usage and fixed-cost allocation is applied to editable fully loaded
+                labor-cost benchmarks. US$1.00 means the financially realizable labor value
+                equals AI spend. This compares cost structures, not worker capability.
+              </p>
+              <p id="country-break-even"></p>
+            </div>
+            <div class="country-bars" id="country-bars"></div>
+            <details class="salary-editor">
+              <summary>Edit fully loaded labor-cost benchmarks</summary>
+              <p>
+                Benchmarks may include salary, bonus, employer taxes, benefits, and equity.
+                Override them for the relevant role mix and company level.
+              </p>
+              <div class="salary-editor-grid" id="salary-editor-grid"></div>
+            </details>
+          </section>
+
+          <footer class="source-footer" id="source-footer"></footer>
+          <footer class="site-credit">
+            Open-source calculator by
+            <a href="https://protico.io" target="_blank" rel="noreferrer">Protico.io</a>.
+          </footer>
+        </section>
+      </div>
+
+      <nav
+        class="mobile-workspace-nav"
+        id="mobile-workspace-nav"
+        role="tablist"
+        aria-label="Calculator workspace"
+      >
+        <button
+          class="mobile-workspace-tab"
+          id="mobile-inputs-tab"
+          type="button"
+          role="tab"
+          aria-controls="mobile-inputs-panel"
+          aria-selected="true"
+          data-mobile-view="inputs"
+        >
+          <span class="mobile-workspace-tab-label">Inputs</span>
+        </button>
+        <button
+          class="mobile-workspace-tab"
+          id="mobile-results-tab"
+          type="button"
+          role="tab"
+          aria-controls="mobile-results-panel"
+          aria-selected="false"
+          data-mobile-view="results"
+        >
+          <span class="mobile-view-status" aria-hidden="true"></span>
+          <span class="mobile-workspace-tab-label">Analysis</span>
+        </button>
+      </nav>
+    </main>
+
+    <dialog class="research-dialog" id="research-dialog" aria-labelledby="research-dialog-title">
+      <div class="research-dialog-header">
+        <div>
+          <p class="section-kicker">RESEARCH PROJECT</p>
+          <h2 id="research-dialog-title">Exploring AI, enterprise economics, and organization design</h2>
+        </div>
+        <button class="dialog-close" id="research-dialog-close" type="button" aria-label="Close research project introduction">×</button>
+      </div>
+      <div class="research-dialog-body">
+        <p>
+          This project is an exploratory model that brings financial structure, task design,
+          adoption behavior, quality risk, and workforce capacity into one transparent
+          scenario framework. It does not assume that AI necessarily improves productivity.
+          It asks when the same technical capability can produce opposite economic outcomes
+          across different revenue, margin, labor-cost, and demand conditions.
+        </p>
+        <p>
+          Public-company examples provide scale, industry, and gross-margin reference points.
+          Revenue, operating profit, and employee counts come from public filings where
+          available. Internal task exposure, AI costs, adoption, review burden, and revenue
+          conversion are generally not public and remain editable research assumptions.
+        </p>
+        <p>
+          Outputs are for hypothesis generation and sensitivity analysis, not forecasts or
+          management advice. All calculations run locally in the browser. No company inputs
+          are uploaded, making the project suitable for private internal exploration and
+          independent review of every formula.
+        </p>
+        <section class="research-formulas">
+          <h3>Model equations and limitations</h3>
+          <div class="formula-content">
+            <code>Gross task time saved = speed uplift ÷ (1 + speed uplift)</code>
+            <code>Net task time saved = gross time saved − review − correction time − AI administration overhead</code>
+            <code>Organization time release = exposure × adoption × net task time saved</code>
+            <code>AI revenue = min(capacity-based revenue, validated demand ceiling)</code>
+            <code>Annual AI cost = seat/API cost + fixed platform cost + transformation amortization + product inference cost</code>
+            <code>Capacity available for further review = released FTE × automatable share × non-growth share × (1 − risk buffer)</code>
+            <p>
+              This is a research model, not financial, legal, HR, or workforce advice.
+              Public filings cannot identify the causal effect of AI. Internal task, quality,
+              demand, and cost evidence must replace the default assumptions.
+            </p>
+          </div>
+        </section>
+      </div>
+    </dialog>
+
+    <dialog class="help-dialog" id="help-dialog" aria-labelledby="help-title">
+      <div class="help-dialog-header">
+        <div>
+          <p class="section-kicker">PARAMETER GUIDE</p>
+          <h2 id="help-title"></h2>
+        </div>
+        <button class="dialog-close" id="help-close" type="button" aria-label="Close help">×</button>
+      </div>
+      <div class="help-dialog-body">
+        <section>
+          <h3>Meaning</h3>
+          <p id="help-meaning"></p>
+        </section>
+        <section>
+          <h3>How it changes the model</h3>
+          <p id="help-impact"></p>
+        </section>
+        <section>
+          <h3>Input example</h3>
+          <p id="help-example"></p>
+        </section>
+        <div class="help-guidance" id="help-guidance"></div>
+      </div>
+    </dialog>
+
+    <script src="./calculator.js"></script>
+    <script src="./locale-packs.js"></script>
+    <script src="./i18n.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

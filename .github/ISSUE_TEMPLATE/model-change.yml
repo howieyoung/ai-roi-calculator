@@ -1,0 +1,39 @@
+name: Model or equation proposal
+description: Propose a change to an assumption, equation, or output.
+title: "[Model]: "
+labels:
+  - model
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What behavior or assumption is incomplete or misleading?
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Current equation or behavior
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed equation or behavior
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Economic or accounting rationale
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and primary sources
+  - type: textarea
+    id: edge
+    attributes:
+      label: Edge cases and failure modes
