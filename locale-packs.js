@@ -1179,8 +1179,8 @@
         description: "A local-first, open-source AI ROI calculator for exploring whether an organization can economically afford AI.",
       },
       "zh-TW": {
-        title: "AI ROI Calculator - 我的企業是否用得起 AI？",
-        description: "一套在本機執行的開源 AI ROI 試算器，用於探索企業是否能在經濟上負擔 AI。",
+        title: "AI ROI Calculator - 我的公司是否準備好全面導入企業 AI？",
+        description: "一套在本機執行的開源 AI ROI 試算器，用於探索公司是否準備好全面導入企業 AI，並研究營收、毛利、人力成本與受控試點條件。",
       },
       ja: {
         title: "AI ROI Calculator - 自社は AI を導入する余力があるか？",

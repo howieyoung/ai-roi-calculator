@@ -11,7 +11,7 @@
 
   const staticTranslations = {
     "AI ROI CALCULATOR": "AI ROI Calculator",
-    "Can My Company Afford AI?": "我的企業是否用得起 AI？",
+    "Can My Company Afford AI?": "我的公司是否準備好全面導入企業 AI？",
     "Export PDF": "匯出 PDF",
     "Language": "語言",
     "About this research project": "關於本研究專案",

@@ -68,6 +68,14 @@ test("stored Traditional Chinese preference is restored locally", () => {
   assert.equal(i18n.t("reset"), "重設目前情境");
 });
 
+test("Traditional Chinese title targets enterprise AI readiness", () => {
+  const { localePacks } = loadI18n();
+  const html = fs.readFileSync("./i18n.js", "utf8");
+  assert.match(html, /我的公司是否準備好全面導入企業 AI？/);
+  assert.match(localePacks.meta["zh-TW"].title, /全面導入企業 AI/);
+  assert.match(localePacks.meta["zh-TW"].description, /企業 AI/);
+});
+
 test("HTML loads i18n before application rendering and exposes scalable language selection", () => {
   const html = fs.readFileSync("./index.html", "utf8");
   assert.match(html, /id="language-select"/);
@@ -211,6 +219,8 @@ test("hosted build output injects SEO metadata, analytics, and security headers"
   assert.match(html, /"name":"AI ROI Calculator - Can My Company Afford AI\?"/);
   assert.match(html, /AI ROI calculator preview/);
   assert.match(html, /AI ROI calculator/);
+  assert.match(html, /企業 AI/);
+  assert.match(html, /企業AI/);
   assert.match(html, /property="og:image" content="https:\/\/www\.all4\.ai\/og-image-ai-roi\.svg"/);
   assert.match(html, /name="twitter:card" content="summary_large_image"/);
   assert.match(html, /type="application\/ld\+json"/);

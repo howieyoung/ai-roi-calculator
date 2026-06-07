@@ -1,6 +1,6 @@
-# AI ROI Calculator - 我的企業是否用得起 AI？
+# AI ROI Calculator - 我的公司是否準備好全面導入企業 AI？
 
-這是一個在瀏覽器本地端運作的開源 AI ROI 研究試算器，用於探索企業導入 AI 後，生產力、營收、成本、毛利與組織容量之間可能出現的不同結果。
+這是一個在瀏覽器本地端運作的開源 AI ROI 研究試算器，用於探索公司是否準備好全面導入企業 AI，以及導入後生產力、營收、成本、毛利與組織容量之間可能出現的不同結果。
 
 [線上試算](https://www.all4.ai/) · [English README](./README.md) · [完整模型規格](./docs/MODEL.md) · [Agent 操作指南](./docs/AGENT_GUIDE.md) · [參與貢獻](./CONTRIBUTING.md)
 

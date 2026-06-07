@@ -71,7 +71,7 @@ function hostedMetaTags() {
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="author" content="Protico.io" />
     <meta name="application-name" content="AI ROI Calculator" />
-    <meta name="keywords" content="AI ROI calculator, AI ROI, AI adoption ROI, enterprise AI ROI, revenue per employee, AI productivity, labor cost payback, AI affordability calculator" />
+    <meta name="keywords" content="AI ROI calculator, AI ROI, AI adoption ROI, enterprise AI ROI, enterprise AI, 企業 AI, 企業AI, revenue per employee, AI productivity, labor cost payback, AI affordability calculator" />
     <meta name="theme-color" content="#f7f8f6" />
     <link rel="canonical" href="${siteUrl}" />
     <link rel="alternate" hreflang="x-default" href="${siteUrl}" />
