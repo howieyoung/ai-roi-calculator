@@ -201,6 +201,7 @@ test("hosted build output injects SEO metadata, analytics, and security headers"
   const robots = fs.readFileSync("./dist/robots.txt", "utf8");
   const sitemap = fs.readFileSync("./dist/sitemap.xml", "utf8");
   const ogImage = fs.readFileSync("./dist/og-image.svg", "utf8");
+  const versionedOgImage = fs.readFileSync("./dist/og-image-ai-roi.svg", "utf8");
 
   assert.match(html, /<title>AI ROI Calculator - Can My Company Afford AI\?<\/title>/);
   assert.doesNotMatch(html, /AI Organization Economics Calculator/);
@@ -210,7 +211,7 @@ test("hosted build output injects SEO metadata, analytics, and security headers"
   assert.match(html, /"name":"AI ROI Calculator - Can My Company Afford AI\?"/);
   assert.match(html, /AI ROI calculator preview/);
   assert.match(html, /AI ROI calculator/);
-  assert.match(html, /property="og:image" content="https:\/\/www\.all4\.ai\/og-image\.svg"/);
+  assert.match(html, /property="og:image" content="https:\/\/www\.all4\.ai\/og-image-ai-roi\.svg"/);
   assert.match(html, /name="twitter:card" content="summary_large_image"/);
   assert.match(html, /type="application\/ld\+json"/);
   assert.match(html, /"@type":"WebApplication"/);
@@ -231,12 +232,15 @@ test("hosted build output injects SEO metadata, analytics, and security headers"
   assert.match(headers, /Referrer-Policy: strict-origin-when-cross-origin/);
   assert.match(headers, /Permissions-Policy: camera=\(\), microphone=\(\), geolocation=\(\), payment=\(\), usb=\(\), bluetooth=\(\)/);
   assert.match(headers, /X-XSS-Protection: 0/);
+  assert.match(headers, /\/og-image-ai-roi\.svg/);
 
   assert.match(robots, /User-agent: \*/);
   assert.match(robots, /Sitemap: https:\/\/www\.all4\.ai\/sitemap\.xml/);
   assert.match(sitemap, /<loc>https:\/\/www\.all4\.ai\/<\/loc>/);
   assert.match(ogImage, /AI ROI Calculator - Can My Company Afford AI\?/);
   assert.match(ogImage, /AI ROI CALCULATOR/);
+  assert.match(versionedOgImage, /AI ROI Calculator - Can My Company Afford AI\?/);
+  assert.match(versionedOgImage, /AI ROI CALCULATOR/);
 });
 
 test("controlled-pilot verdict is stronger across supported locales", () => {

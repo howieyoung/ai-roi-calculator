@@ -11,7 +11,8 @@ const siteName = "all4.ai";
 const siteTitle = "AI ROI Calculator - Can My Company Afford AI?";
 const siteDescription =
   "Use a local-first AI ROI calculator to test whether your company can afford AI with RPE, ROI, margin, labor-cost payback, and controlled pilot assumptions.";
-const ogImageUrl = `${siteUrl}og-image.svg`;
+const ogImageFile = "og-image-ai-roi.svg";
+const ogImageUrl = `${siteUrl}${ogImageFile}`;
 const gaMeasurementId = "G-H7E29MBGZ6";
 const copyFiles = [
   "styles.css",
@@ -162,6 +163,9 @@ function securityHeaders(jsonLd) {
 
 /og-image.svg
   Cache-Control: public, max-age=86400
+
+/${ogImageFile}
+  Cache-Control: public, max-age=86400
 `;
 }
 
@@ -230,7 +234,8 @@ await Promise.all([
   writeFile(resolve(outputDir, "robots.txt"), robotsTxt(), "utf8"),
   writeFile(resolve(outputDir, "sitemap.xml"), sitemapXml(), "utf8"),
   writeFile(resolve(outputDir, "og-image.svg"), ogImageSvg(), "utf8"),
+  writeFile(resolve(outputDir, ogImageFile), ogImageSvg(), "utf8"),
   writeFile(resolve(outputDir, "_headers"), securityHeaders(jsonLd), "utf8"),
 ]);
 
-console.log(`Built ${copyFiles.length + 6} public assets in ${outputDir}`);
+console.log(`Built ${copyFiles.length + 7} public assets in ${outputDir}`);
