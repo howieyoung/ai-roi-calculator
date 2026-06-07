@@ -9,6 +9,15 @@
     />
     <link rel="icon" href="data:," />
     <title>Can My Company Afford AI?</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H7E29MBGZ6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-H7E29MBGZ6');
+    </script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -497,7 +506,11 @@
               <h2 id="scenario-title">Custom company</h2>
               <span class="result-industry" id="result-industry"></span>
             </div>
-            <div class="verdict" id="verdict"></div>
+            <div class="verdict-card" id="verdict-card">
+              <span class="verdict-label">AI affordability signal</span>
+              <strong class="verdict" id="verdict"></strong>
+              <span class="verdict-note" id="verdict-note"></span>
+            </div>
           </div>
 
           <div class="metric-grid">
@@ -858,9 +871,10 @@
               <a href="https://protico.io" target="_blank" rel="noreferrer">Protico.io</a>.
             </p>
             <p>
-              The hosted site uses Cloudflare Pages for delivery and Protico services for
-              product guidance and user support. Calculator inputs and equations still run in
-              the browser.
+              The hosted site uses Cloudflare Pages for delivery, Protico services for product
+              guidance and user support, and Google Analytics to understand whether the site
+              meets visitor needs. Calculator inputs and equations still run in the browser,
+              and input values are not sent as analytics events.
             </p>
           </footer>
         </section>
@@ -924,8 +938,8 @@
           Outputs are for hypothesis generation and sensitivity analysis, not forecasts or
           management advice. Calculator inputs are processed locally by the model and are not
           intentionally uploaded by the calculator. The hosted site is delivered through
-          Cloudflare and includes the Protico support frame disclosed in the footer and
-          repository docs.
+          Cloudflare and includes the Protico support frame and Google Analytics described in
+          the footer and repository docs.
         </p>
         <section class="research-formulas">
           <h3>Model equations and limitations</h3>

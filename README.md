@@ -34,13 +34,16 @@ The calculator is a static browser application:
   analysis panel plus the tested paths toward positive economics.
 - Public filing links are opened only when the user selects them.
 - The hosted site at `all4.ai` is delivered through Cloudflare Pages and loads a
-  Protico frame service for product guidance and user support. These services
-  may receive normal browser request metadata and anything a visitor
-  intentionally shares through that service.
+  Protico frame service for product guidance and user support.
+- The hosted site also uses Google Analytics to understand whether the site
+  meets visitor needs. The application does not send calculator input values,
+  scenario outputs, or custom field-level events to Google Analytics.
+- These services may receive normal browser request metadata and anything a
+  visitor intentionally shares through that service.
 
-Organizations can clone the repository, remove or block the hosted Protico
-script, disconnect from the internet, and run the calculator on an internal
-machine for stricter privacy requirements.
+Organizations can clone the repository, remove or block the hosted Protico and
+Google Analytics scripts, disconnect from the internet, and run the calculator
+on an internal machine for stricter privacy requirements.
 
 ## Run locally
 
@@ -108,8 +111,8 @@ npx wrangler pages deploy dist \
 Wrangler authentication and permission to deploy to the target Cloudflare
 account are required. Company scenario inputs remain in the visitor's browser;
 the deployed site has no application backend. The production deployment also
-uses Cloudflare delivery services and the Protico frame described in the
-privacy section.
+uses Cloudflare delivery services, Google Analytics, and the Protico frame
+described in the privacy section.
 
 ## What the calculator models
 
@@ -287,5 +290,5 @@ MIT License. See [LICENSE](./LICENSE).
 The application footer identifies the project as open source, links to the
 [GitHub repository](https://github.com/howieyoung/ai-efficiency-calculator),
 credits [Protico.io](https://protico.io), and discloses that the hosted site
-uses Cloudflare and Protico services. That attribution does not change the MIT
-permissions granted in the license.
+uses Cloudflare, Protico, and Google Analytics services. That attribution does
+not change the MIT permissions granted in the license.

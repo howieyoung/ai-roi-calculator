@@ -34,10 +34,13 @@
 - 輸入只保存在瀏覽器 `localStorage`。
 - PDF 報告透過瀏覽器原生列印流程產生，內容包含右側分析與「通往正向經濟效益的路徑」。
 - 線上網站 `all4.ai` 透過 Cloudflare Pages 遞送，並載入 Protico frame
-  服務，用於提供產品引導與用戶支援。這些服務可能會收到一般瀏覽器
-  request metadata，以及使用者自行在該服務中提供的內容。
-- 企業若有更高機密性需求，可 clone 專案、移除或阻擋 Protico script，
-  並在離線或內部環境自行部署。
+  服務，用於提供產品引導與用戶支援。
+- 線上網站也使用 Google Analytics 了解網站是否符合訪客需求。應用程式
+  不會將試算輸入值、情境輸出或自訂欄位層級事件傳送到 Google Analytics。
+- 這些服務可能會收到一般瀏覽器 request metadata，以及使用者自行在該
+  服務中提供的內容。
+- 企業若有更高機密性需求，可 clone 專案、移除或阻擋 Protico 與
+  Google Analytics scripts，並在離線或內部環境自行部署。
 
 ## 啟動
 
@@ -71,8 +74,8 @@ npx wrangler pages deploy dist \
 
 部署者需要先完成 Wrangler 登入，並具備目標 Cloudflare 帳號的 Pages
 權限。企業輸入資料仍只保留在使用者瀏覽器中，網站沒有應用程式後端。
-正式線上部署同時使用 Cloudflare 遞送服務與隱私章節說明的 Protico
-frame 服務。
+正式線上部署同時使用 Cloudflare 遞送服務、Google Analytics，以及隱私
+章節說明的 Protico frame 服務。
 
 ## 核心修正
 

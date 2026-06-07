@@ -116,6 +116,9 @@ test("new locale packs cover every preset and parameter guide entry", () => {
     "verdict.positive",
     "verdict.pilot",
     "verdict.negative",
+    "verdict.note.positive",
+    "verdict.note.caution",
+    "verdict.note.negative",
     "warning.negativeProductivity",
     "path.combined",
     "analysis.overall",
@@ -165,6 +168,8 @@ test("PDF export uses the browser print workflow and print-only report layout", 
   assert.match(css, /@media print/);
   assert.match(css, /\.is-exporting-pdf \.print-report-header/);
   assert.match(css, /\.input-panel > \.scenario-section-input/);
+  assert.match(css, /iframe\[src\*="protico\.io"\]/);
+  assert.match(css, /\[class\*="protico" i\]/);
 });
 
 test("the public title, source link, and hosted-service disclosure are present", () => {
@@ -174,7 +179,26 @@ test("the public title, source link, and hosted-service disclosure are present",
   assert.match(html, /https:\/\/github\.com\/howieyoung\/ai-efficiency-calculator/);
   assert.match(html, /Open-source research calculator/);
   assert.match(html, /Cloudflare Pages/);
+  assert.match(html, /googletagmanager\.com\/gtag\/js\?id=G-H7E29MBGZ6/);
+  assert.match(html, /gtag\('config', 'G-H7E29MBGZ6'\)/);
+  assert.match(html, /Google Analytics to understand whether the site/);
+  assert.match(html, /input values are not sent as analytics events/);
   assert.match(html, /https:\/\/main\.protico\.io\/api\/v1\/all4\.ai\/protico-frame\.js/);
+});
+
+test("controlled-pilot verdict is stronger across supported locales", () => {
+  const { i18n } = loadI18n();
+  assert.equal(i18n.t("verdict.pilot"), "Requires tightly controlled pilot-scale validation");
+  assert.match(i18n.t("verdict.note.caution"), /does not yet support broad rollout/);
+  i18n.setLocale("zh-TW");
+  assert.equal(i18n.t("verdict.pilot"), "需高度控制試點規模進行驗證");
+  assert.match(i18n.t("verdict.note.caution"), /必須縮小試點範圍/);
+  i18n.setLocale("ja");
+  assert.match(i18n.t("verdict.pilot"), /規模を厳格に管理/);
+  i18n.setLocale("fr");
+  assert.match(i18n.t("verdict.pilot"), /strictement limité/);
+  i18n.setLocale("es");
+  assert.match(i18n.t("verdict.pilot"), /estrictamente controlado/);
 });
 
 test("research introduction is a modal opened from the title", () => {
@@ -299,6 +323,8 @@ test("Traditional Chinese interface avoids non-preferred terminology", () => {
   ["返" + "工", "維" + "運", "證據調整後" + "產能上限"].forEach(
     (term) => assert.equal(sources.includes(term), false)
   );
+  assert.equal(sources.includes("以受控試點進行驗證"), false);
   assert.match(sources, /修正重做時間/);
   assert.match(sources, /可進一步評估的人力空間/);
+  assert.match(sources, /需高度控制試點規模進行驗證/);
 });

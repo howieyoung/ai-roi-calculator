@@ -7,10 +7,11 @@ boundaries.
 ## Operating constraints
 
 - Keep all company inputs and calculations local.
-- Do not add additional analytics, telemetry, remote persistence, hosted AI
-  calls, or a third-party PDF service. The hosted site already discloses
-  Cloudflare delivery and the Protico frame service; do not pass calculator
-  inputs to either service.
+- Do not add remote persistence, hosted AI calls, or a third-party PDF service.
+  The hosted site already discloses Cloudflare delivery, the Protico frame
+  service, and Google Analytics for aggregate site-need evaluation. Do not pass
+  calculator inputs, scenario outputs, or custom field-level events to those
+  services.
 - Do not describe financial stress-test outputs as workforce recommendations.
 - Preserve the no-AI baseline and AI-attributed difference.
 - Mark synthetic scenarios as synthetic and public-company assumptions as

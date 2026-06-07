@@ -626,8 +626,58 @@ input[type="range"] {
   display: inline-block;
 }
 
+.verdict-card {
+  width: min(320px, 42%);
+  padding: 14px 16px;
+  display: grid;
+  gap: 6px;
+  background: var(--surface-alt);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--muted);
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(24, 27, 26, 0.08);
+}
+
+.verdict-label {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .verdict {
+  width: fit-content;
+  max-width: 100%;
+  display: inline-flex;
   font-size: 12px;
+  line-height: 1.35;
+  white-space: normal;
+}
+
+.verdict-note {
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+.verdict-card-positive {
+  background: var(--green-soft);
+  border-color: #b9e0d0;
+  border-left-color: var(--green);
+}
+
+.verdict-card-caution {
+  background: var(--amber-soft);
+  border-color: #efd39d;
+  border-left-color: var(--amber);
+}
+
+.verdict-card-negative {
+  background: var(--red-soft);
+  border-color: #eab7b3;
+  border-left-color: var(--red);
 }
 
 .verdict-positive {
@@ -1603,6 +1653,13 @@ canvas {
     display: none !important;
   }
 
+  iframe[src*="protico.io"],
+  [id*="protico" i],
+  [class*="protico" i],
+  [src*="protico" i] {
+    display: none !important;
+  }
+
   main {
     display: block;
   }
@@ -2137,6 +2194,12 @@ canvas {
   .results-panel > .result-header {
     order: 1;
     padding: 18px 0;
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .verdict-card {
+    width: 100%;
   }
 
   .results-panel > .metric-grid {

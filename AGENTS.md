@@ -3,7 +3,10 @@
 Read [docs/AGENT_GUIDE.md](./docs/AGENT_GUIDE.md) before editing this project.
 
 The calculator is local-first. Do not add network transmission of company
-inputs, analytics, remote AI calls, or third-party PDF generation.
+inputs, remote AI calls, or third-party PDF generation. The hosted site may use
+disclosed delivery, support, and aggregate web analytics services, but do not
+send calculator input values, scenario outputs, or custom field-level events to
+those services.
 
 Run before completion:
 

@@ -861,7 +861,7 @@ const WARNING_TRANSLATIONS_ZH = {
 };
 
 const VERDICT_TRANSLATIONS_ZH = {
-  "Validate with a controlled pilot": "以受控試點進行驗證",
+  "Validate with a controlled pilot": "需高度控制試點規模進行驗證",
   "Positive economics are plausible": "可能具備正向經濟效益",
   "Current assumptions do not hold": "目前假設無法成立",
 };
@@ -1743,6 +1743,9 @@ function render() {
   const verdict = element("verdict");
   verdict.textContent = localizedVerdict(result.verdict);
   verdict.className = `verdict verdict-${result.verdictClass}`;
+  const verdictCard = element("verdict-card");
+  verdictCard.className = `verdict-card verdict-card-${result.verdictClass}`;
+  element("verdict-note").textContent = t(`verdict.note.${result.verdictClass}`);
 
   const warning = element("model-warning");
   if (result.warnings.length) {
