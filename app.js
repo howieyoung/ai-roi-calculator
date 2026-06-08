@@ -19,7 +19,7 @@ const MOBILE_LAYOUT_QUERY = window.matchMedia("(max-width: 820px)");
 const MOBILE_UI_DEFAULTS = {
   activeView: "inputs",
   openInputSection: "company",
-  openAnalysisSection: "cash",
+  openAnalysisSection: "attribution",
 };
 
 const inputIds = [
@@ -1105,9 +1105,9 @@ function loadMobileUiState() {
       ? stored.openInputSection
       : MOBILE_UI_DEFAULTS.openInputSection;
     const openAnalysisSection = [
+      "attribution",
       "cash",
       "interpretation",
-      "attribution",
       "uncertainty",
       "performance",
       "tradeoff",

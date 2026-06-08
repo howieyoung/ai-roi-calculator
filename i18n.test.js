@@ -340,9 +340,13 @@ test("mobile workspace uses persistent tabs, single-open accordions, and fixed-h
   assert.match(html, /data-mobile-input-section="company"/);
   assert.match(html, /data-mobile-analysis-section="attribution"/);
   assert.match(html, /data-mobile-analysis-section="cash"/);
+  assert.ok(
+    html.indexOf('data-mobile-analysis-section="attribution"') <
+      html.indexOf('data-mobile-analysis-section="cash"')
+  );
   assert.match(app, /ai-efficiency-calculator-mobile-ui-v1/);
   assert.match(app, /openInputSection:\s*"company"/);
-  assert.match(app, /openAnalysisSection:\s*"cash"/);
+  assert.match(app, /openAnalysisSection:\s*"attribution"/);
   assert.match(app, /mobileScrollPositions/);
   assert.match(app, /setMobileAccordion/);
   assert.match(app, /redrawVisibleCharts/);

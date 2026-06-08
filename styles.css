@@ -2250,16 +2250,16 @@ canvas {
     order: 5;
   }
 
-  .results-panel > [data-mobile-analysis-section="cash"] {
+  .results-panel > [data-mobile-analysis-section="attribution"] {
     order: 6;
   }
 
-  .results-panel > [data-mobile-analysis-section="attribution"] {
-    order: 8;
+  .results-panel > [data-mobile-analysis-section="cash"] {
+    order: 7;
   }
 
   .results-panel > [data-mobile-analysis-section="interpretation"] {
-    order: 7;
+    order: 8;
   }
 
   .results-panel > [data-mobile-analysis-section="uncertainty"] {
