@@ -301,9 +301,16 @@ test("controlled-pilot verdict is stronger across supported locales", () => {
 test("research introduction is a modal opened from the title", () => {
   const html = fs.readFileSync("./index.html", "utf8");
   const app = fs.readFileSync("./app.js", "utf8");
+  const researchDialog = html.match(
+    /<dialog class="research-dialog" id="research-dialog"[\s\S]*?<\/dialog>/
+  )?.[0];
   assert.match(html, /id="research-info-button"/);
   assert.match(html, /<dialog class="research-dialog" id="research-dialog"/);
   assert.doesNotMatch(html, /<section class="intro-band"/);
+  assert.ok(researchDialog);
+  assert.doesNotMatch(researchDialog, /Cloudflare/);
+  assert.doesNotMatch(researchDialog, /Protico/);
+  assert.doesNotMatch(researchDialog, /Google Analytics/);
   assert.match(app, /ai-efficiency-calculator-intro-viewed-v1/);
   assert.match(app, /requestAnimationFrame\(openDialog\)/);
 });
