@@ -1328,7 +1328,7 @@
         "cost-overhang",
         "AI cost arrives before validated value",
         costLevel,
-        `Steady-state AI ROI is ${Number.isFinite(result.aiRoi) ? percent(result.aiRoi) : "infinite"} and the scenario still requires ${percent(result.requiredGrowth)} of current revenue to break even.`,
+        `AI ROI after rollout is ${Number.isFinite(result.aiRoi) ? percent(result.aiRoi) : "infinite"} and the scenario still requires ${percent(result.requiredGrowth)} of current revenue to break even.`,
         "Seats, APIs, platforms, and transformation spending enter cost immediately. Time saved does not automatically become revenue or removable operating capacity.",
         "Narrow the program to measurable workflows. Track actual AI bills, end-to-end task duration, error rates, and incremental gross profit before expanding."
       )

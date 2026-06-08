@@ -497,6 +497,17 @@
               <h2 id="scenario-title">Custom company</h2>
               <span class="result-industry" id="result-industry"></span>
             </div>
+          </div>
+
+          <div class="hero-signal-grid" aria-label="Primary model signals">
+            <article class="metric metric-primary">
+              <span class="output-label">
+                Theoretical released productivity
+                <button class="help-trigger output-help" data-help-key="outputReleasableFte" type="button" aria-label="About theoretical released productivity">?</button>
+              </span>
+              <strong id="capacity-fte"></strong>
+              <small id="capacity-note">Bounded by current FTE</small>
+            </article>
             <div class="verdict-card" id="verdict-card">
               <span class="verdict-label" id="verdict-label">AI affordability signal</span>
               <strong class="verdict" id="verdict"></strong>
@@ -523,8 +534,8 @@
             </article>
             <article class="metric">
               <span class="output-label">
-                Steady-state AI ROI
-                <button class="help-trigger output-help" data-help-key="outputAiRoi" type="button" aria-label="About steady-state AI ROI">?</button>
+                AI ROI after rollout
+                <button class="help-trigger output-help" data-help-key="outputAiRoi" type="button" aria-label="About AI ROI after rollout">?</button>
               </span>
               <strong id="ai-roi"></strong>
               <small id="profit-delta"></small>
@@ -608,14 +619,6 @@
               </div>
             </div>
             <div class="workforce-grid">
-              <div class="workforce-number">
-                <span class="output-label">
-                  Theoretical released time
-                  <button class="help-trigger output-help" data-help-key="outputReleasableFte" type="button" aria-label="About theoretical released time">?</button>
-                </span>
-                <strong id="capacity-fte"></strong>
-                <small id="capacity-note">Bounded by current FTE</small>
-              </div>
               <div class="workforce-number">
                 <span class="output-label">
                   Capacity available for further review

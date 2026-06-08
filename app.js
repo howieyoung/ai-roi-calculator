@@ -19,7 +19,7 @@ const MOBILE_LAYOUT_QUERY = window.matchMedia("(max-width: 820px)");
 const MOBILE_UI_DEFAULTS = {
   activeView: "inputs",
   openInputSection: "company",
-  openAnalysisSection: "attribution",
+  openAnalysisSection: "cash",
 };
 
 const inputIds = [
@@ -292,7 +292,7 @@ const HELP_CONTENT_ZH = {
   },
   amortizationYears: {
     title: "轉型成本攤提期間",
-    meaning: "將一次性轉型支出分攤到多少年，以估計穩態年度負擔。",
+    meaning: "將一次性轉型支出分攤到多少年，以估計導入成熟後的年度負擔。",
     impact: "年限越長，年度 AI 成本與短期營收門檻越低，但不會改變實際現金已支出的總額。",
     example: "US$3M 轉型成本攤提 3 年，模型每年計入 US$1M。",
     guidance: "軟體與流程改造常用 2–3 年；硬體可依預期使用年限。另行評估第一年現金流，不要只看攤提後 ROI。",
@@ -327,9 +327,9 @@ const HELP_CONTENT_ZH = {
   },
   year1Realization: {
     title: "第一年價值實現比例",
-    meaning: "預期在第一年實現的穩態 AI 價值比例。",
+    meaning: "預期在第一年實現的導入成熟後 AI 價值比例。",
     impact: "它會改變第一年現金流、多年度 NPV 與回收期，但不會降低初始轉型現金支出。",
-    example: "若採用與流程重設預計第一年只能實現不到一半穩態價值，可填 40%。",
+    example: "若採用與流程重設預計第一年只能實現不到一半的導入成熟後價值，可填 40%。",
     guidance: "當導入、資料存取、訓練或採購尚未完成時，請採保守數值。",
   },
   riskBuffer: {
@@ -341,7 +341,7 @@ const HELP_CONTENT_ZH = {
   },
   targetMargin: {
     title: "目標營業利益率",
-    meaning: "導入 AI、自然營收成長與可能的人力調整後，希望達到的穩態營業利益占營收比例。",
+    meaning: "導入 AI、自然營收成長與可能的人力調整後，希望達到的導入成熟後營業利益占營收比例。",
     impact: "目標越高，模型要求的營收成長或人力調整越大。若高於毛利率，數學上不可行。",
     example: "營收 US$100M、目標營業利益 US$15M，請填 15%。",
     guidance: "可用同業中位數、董事會目標或現金跑道要求設定；不要只為得到特定人力調整數字而任意提高。",
@@ -356,7 +356,7 @@ const HELP_CONTENT_ZH = {
   severanceMonths: {
     title: "平均一次性人力調整成本",
     meaning: "每位被調整員工的一次性現金成本，以平均幾個月 fully-loaded 薪資表示。",
-    impact: "它不改變穩態所需人數，但會增加第一年現金支出並延長實際回收期。",
+    impact: "它不改變導入成熟後所需人數，但會增加第一年現金支出並延長實際回收期。",
     example: "離職補償、通知期、未休假、法律與安置費合計約半年人力成本，可填 6 個月。",
     guidance: "需依國家勞動法、合約、年資與股權條件估算。本工具不是法律或人資建議。",
   },
@@ -403,11 +403,11 @@ const HELP_CONTENT_ZH = {
     guidance: "主要調整「歷史營收成長率」、「效率提升」、「釋放產能投入營收成長」與「產能轉換營收效率」。這是情境值，不是營收預測保證。",
   },
   outputAiRoi: {
-    title: "AI 年度 ROI",
-    meaning: "公式為「AI 帶來的穩態年度增量營業利益 ÷ AI 年度成本」。增量利益是 AI 情境與未導入 AI 基準之差。",
+    title: "AI 導入成熟後 ROI",
+    meaning: "公式為「AI 導入成熟後帶來的年度增量營業利益 ÷ AI 年度成本」。增量利益是 AI 情境與未導入 AI 基準之差。",
     impact: "AI 增量營收與毛利率提高會改善 ROI；每人 AI 成本、固定成本、轉型攤提、產品推論與負生產力成本會降低 ROI。",
     example: "AI 年度成本 US$1M，AI 情境比未導入基準多 US$0.4M 營業利益，ROI = 40%。負數表示目前假設下 AI 使年度利益下降。",
-    guidance: "可調整 AI 成本、效率、採用率、品質、毛利率與營收轉換效率。此處是年度穩態 ROI，不等於第一年現金回收率。",
+    guidance: "可調整 AI 成本、效率、採用率、品質、毛利率與營收轉換效率。此處是導入成熟後的年度 ROI，不等於第一年現金回收率。",
   },
   outputProductivity: {
     title: "淨生產力變化",
@@ -438,11 +438,11 @@ const HELP_CONTENT_ZH = {
     guidance: "可調整 AI 成本、毛利率、效率、投入營收比例與轉換效率。0% 表示目前 AI 增量營收已足以覆蓋年度 AI 成本，不代表整體一定達到目標利益率。",
   },
   outputReleasableFte: {
-    title: "理論可釋放工時",
-    meaning: "把效率提升換算為原本可節省的工作時間，扣除審核、修正重做與 AI 管理，再乘上工作曝險、採用率及員工人數。它受現有人數限制。",
-    impact: "效率、工作曝險或採用率提高會增加可釋放工時；各項負擔提高則會降低。效率提升 100% 等於節省該任務 50% 原工時。",
+    title: "理論可釋放生產力",
+    meaning: "把效率提升換算為可重新配置的生產力容量，扣除審核、修正重做與 AI 管理，再乘上工作曝險、採用率及員工人數。它受現有人數限制。",
+    impact: "效率、工作曝險或採用率提高會增加可釋放生產力；各項負擔提高則會降低。效率提升 100% 等於節省該任務 50% 原工時。",
     example: "任務由 10 小時縮短到 5 小時，效率提升 100%，但只釋放原任務 50% 的工時，而不是 100%。",
-    guidance: "調整工作曝險、效率、採用率與品質。這仍只是工時容量，不代表所有零碎工時都能整併成可減少的完整職位。",
+    guidance: "調整工作曝險、效率、採用率與品質。這仍只是生產力容量，不代表所有零碎工時都能整併成可減少的完整職位。",
   },
   outputSafeFte: {
     title: "可進一步評估的人力空間",
@@ -456,7 +456,7 @@ const HELP_CONTENT_ZH = {
     meaning: "這不是 AI 直接建議的人力調整數。模型先計算自然成長與 AI 後、維持目前人數的利益率，再從 0 人開始逐人減少，直到「調整後營業利益 ÷ 調整後營收」首次達到目標營業利益率。",
     impact: "每減少 1 人會降低薪資成本，但也會依「每調整 1% 人力的營收損失」降低營收。目標利益率、薪資、AI 成本與營收損失假設都會大幅改變答案。",
     example: "若顯示 12 人，意思是模型在減少 0–11 人時都未達目標；減少至 12 人後才首次達標。若安全上限只有 3 FTE，代表另外 9 人沒有 AI 釋放工時支持。",
-    guidance: "先調整「目標營業利益率」與「每調整 1% 人力的營收損失」，再測試額外營收情境。數字採穩態計算，一次性人力調整成本只列第一年現金支出，不能直接作為組織決策。",
+    guidance: "先調整「目標營業利益率」與「每調整 1% 人力的營收損失」，再測試額外營收情境。數字採導入成熟後的年度情境計算，一次性人力調整成本只列第一年現金支出，不能直接作為組織決策。",
   },
   outputLegacyHeadcount: {
     title: "傳統擴編所需人數",
@@ -617,15 +617,15 @@ Object.assign(HELP_CONTENT_EN, {
   transitionCost: help(
     "One-time transformation cost",
     "Initial cash spending for workflow redesign, data preparation, integration, training, and migration.",
-    "The full amount affects year-one cash flow while an amortized portion affects steady-state ROI.",
+    "The full amount affects year-one cash flow while an amortized portion affects after-rollout ROI.",
     "US$200k consulting plus US$500k integration equals US$0.7M.",
     "Separate recurring support from one-time implementation."
   ),
   amortizationYears: help(
     "Transformation amortization period",
-    "Years over which one-time transformation cost is allocated for steady-state analysis.",
+    "Years over which one-time transformation cost is allocated for after-rollout annual analysis.",
     "Longer amortization lowers annual accounting burden but does not reduce first-year cash spending.",
-    "US$3M over three years contributes US$1M per year to steady-state cost.",
+    "US$3M over three years contributes US$1M per year to after-rollout annual cost.",
     "Use an economically defensible useful life."
   ),
   productInferenceCostRate: help(
@@ -658,9 +658,9 @@ Object.assign(HELP_CONTENT_EN, {
   ),
   year1Realization: help(
     "Year-one value realization",
-    "Share of steady-state AI value expected during the first year.",
+    "Share of after-rollout AI value expected during the first year.",
     "It changes first-year cash flow, NPV, and payback without reducing initial cash cost.",
-    "Enter 40% when year one delivers less than half of steady-state value.",
+    "Enter 40% when year one delivers less than half of the after-rollout value.",
     "Use a conservative value during incomplete implementation."
   ),
   riskBuffer: help(
@@ -687,7 +687,7 @@ Object.assign(HELP_CONTENT_EN, {
   severanceMonths: help(
     "One-time workforce transition cost",
     "Average cash cost per adjusted FTE, measured in months of fully loaded labor cost.",
-    "It affects first-year cash economics but not the steady-state target-margin solver.",
+    "It affects first-year cash economics but not the after-rollout target-margin solver.",
     "Enter 6 for an average cost equal to six months of labor cost.",
     "Use country-specific legal and contractual estimates. This tool is not legal advice."
   ),
@@ -734,11 +734,11 @@ Object.assign(HELP_CONTENT_EN, {
     "This is a scenario, not a revenue forecast."
   ),
   outputAiRoi: help(
-    "Steady-state AI ROI",
-    "AI-attributed annual profit delta divided by annual AI cost.",
+    "AI ROI after rollout",
+    "AI-attributed annual profit delta divided by annual AI cost after the rollout has stabilized.",
     "It compares the AI scenario with a no-AI baseline while headcount remains unchanged.",
     "US$0.4M profit delta on US$1M AI cost equals 40%.",
-    "Review first-year cash flow and NPV as well as steady-state ROI."
+    "Review first-year cash flow and NPV as well as the after-rollout ROI."
   ),
   outputProductivity: help(
     "Net productivity change",
@@ -769,11 +769,11 @@ Object.assign(HELP_CONTENT_EN, {
     "Zero means the AI increment breaks even, not that the company reaches its target margin."
   ),
   outputReleasableFte: help(
-    "Theoretical released time",
-    "Positive net time saved expressed as FTE.",
+    "Theoretical released productivity",
+    "Positive net time saved expressed as FTE-equivalent productivity capacity.",
     "It is bounded by current employee time and excludes negative productivity.",
-    "A 10% organization time-release rate at 100 FTE equals 10 FTE.",
-    "Released time is not automatically removable staffing."
+    "A 10% organization productivity release rate at 100 FTE equals 10 FTE.",
+    "Released productivity is not automatically removable staffing."
   ),
   outputSafeFte: help(
     "Capacity available for further review",
@@ -853,7 +853,7 @@ const WARNING_TRANSLATIONS_ZH = {
   "Review, rework, and AI operations overhead exceed gross time saved. The current AI scenario produces negative net productivity.":
     "人工審核、修正重做與 AI 管理時間高於總節省時間，目前 AI 情境產生負向淨生產力。",
   "Capacity-based AI revenue exceeds the validated demand ceiling. Incremental revenue has been capped.":
-    "依產能推估的 AI 營收超過已驗證需求上限，模型已限制增量營收。",
+    "AI 可能創造的產能高於已確認的市場需求，因此模型只把可驗證需求內的部分算成新增營收。",
   "The target margin remains infeasible even after testing workforce reductions up to 70%.":
     "即使測試最高 70% 的組織人力調整，目標利潤率仍不可行。",
   "Modeled workforce pressure exceeds the capacity available for further review. The gap must be addressed through revenue, non-labor cost, AI cost, or a different target.":
@@ -1105,9 +1105,9 @@ function loadMobileUiState() {
       ? stored.openInputSection
       : MOBILE_UI_DEFAULTS.openInputSection;
     const openAnalysisSection = [
-      "attribution",
-      "interpretation",
       "cash",
+      "interpretation",
+      "attribution",
       "uncertainty",
       "performance",
       "tradeoff",
@@ -1875,7 +1875,7 @@ function localizeScenario(scenario, values, result) {
   const translations = {
     "cost-overhang": {
       title: "AI 成本早於已驗證價值發生",
-      evidence: `穩態 AI ROI 為 ${
+      evidence: `AI 導入成熟後 ROI 為 ${
         Number.isFinite(result.aiRoi) ? percent(result.aiRoi) : "無限"
       }，情境仍需增加相當於目前營收 ${percent(result.requiredGrowth)} 的收入才能損益兩平。`,
       mechanism: "帳號、API、平台與轉型支出會立即進入成本，但節省時間不會自動轉換成營收或可移除的營運產能。",

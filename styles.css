@@ -626,11 +626,28 @@ input[type="range"] {
   display: inline-block;
 }
 
+.hero-signal-grid {
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(320px, 1.1fr);
+  gap: 10px;
+}
+
+.hero-signal-grid .metric,
+.hero-signal-grid .verdict-card {
+  min-height: 164px;
+}
+
+.hero-signal-grid .metric strong {
+  font-size: 44px;
+}
+
 .verdict-card {
-  width: min(560px, 52%);
+  width: 100%;
   padding: 18px 20px;
   display: grid;
   gap: 8px;
+  align-content: center;
   background: var(--surface-alt);
   border: 2px solid var(--line);
   border-left: 8px solid var(--muted);
@@ -1085,7 +1102,7 @@ input[type="range"] {
 
 .workforce-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
@@ -1752,6 +1769,10 @@ canvas {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
+  .hero-signal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .metric {
     min-height: 92px;
     padding: 12px;
@@ -1804,6 +1825,10 @@ canvas {
 
   .metric-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-signal-grid {
+    grid-template-columns: 1fr;
   }
 
   .native-comparison {
@@ -2199,60 +2224,70 @@ canvas {
     flex-direction: column;
   }
 
-  .verdict-card {
-    width: 100%;
+  .results-panel > .hero-signal-grid {
+    order: 2;
+    grid-template-columns: 1fr;
+  }
+
+  .hero-signal-grid .metric,
+  .hero-signal-grid .verdict-card {
+    min-height: 138px;
+  }
+
+  .hero-signal-grid .metric strong {
+    font-size: 38px;
   }
 
   .results-panel > .metric-grid {
-    order: 2;
-  }
-
-  .results-panel > .decision-strip {
     order: 3;
   }
 
-  .results-panel > .mobile-summary-warning {
+  .results-panel > .decision-strip {
     order: 4;
   }
 
-  .results-panel > [data-mobile-analysis-section="attribution"] {
+  .results-panel > .mobile-summary-warning {
     order: 5;
   }
 
-  .results-panel > [data-mobile-analysis-section="interpretation"] {
+  .results-panel > [data-mobile-analysis-section="cash"] {
     order: 6;
   }
 
-  .results-panel > [data-mobile-analysis-section="cash"] {
+  .results-panel > [data-mobile-analysis-section="attribution"] {
+    order: 8;
+  }
+
+  .results-panel > [data-mobile-analysis-section="interpretation"] {
     order: 7;
   }
 
   .results-panel > [data-mobile-analysis-section="uncertainty"] {
-    order: 8;
-  }
-
-  .results-panel > [data-mobile-analysis-section="performance"] {
     order: 9;
   }
 
-  .results-panel > [data-mobile-analysis-section="tradeoff"] {
+  .results-panel > [data-mobile-analysis-section="performance"] {
     order: 10;
   }
 
-  .results-panel > [data-mobile-analysis-section="native"] {
+  .results-panel > [data-mobile-analysis-section="tradeoff"] {
     order: 11;
   }
 
-  .results-panel > [data-mobile-analysis-section="labor"] {
+  .results-panel > [data-mobile-analysis-section="native"] {
     order: 12;
   }
 
-  .results-panel > .source-footer {
+  .results-panel > [data-mobile-analysis-section="labor"] {
     order: 13;
   }
 
-  .results-panel > .site-credit {
+  .results-panel > .source-footer {
     order: 14;
+  }
+
+  .results-panel > .site-credit {
+    order: 15;
   }
 
   .results-panel .mobile-accordion-section {
@@ -2327,6 +2362,10 @@ canvas {
 
   .metric-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-signal-grid {
+    grid-template-columns: 1fr;
   }
 
   .span-2 {

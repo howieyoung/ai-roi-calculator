@@ -15,7 +15,7 @@ Enterprise AI discussions often jump from tool benchmarks to company-wide produc
 - Does released capacity meet real customer demand?
 - Does AI revenue retain enough gross margin after inference cost?
 - Is a target-margin gap caused by AI, or did it already exist?
-- Do first-year cash costs differ from long-run steady-state economics?
+- Do first-year cash costs differ from after-rollout annual economics?
 - How do labor costs change the payback of globally priced models?
 
 This project makes those assumptions explicit and editable. It is intended for research, internal scenario design, and public review of the equations. It is not a prediction engine and does not provide financial, legal, HR, or workforce advice.

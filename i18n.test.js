@@ -332,9 +332,10 @@ test("mobile workspace uses persistent tabs, single-open accordions, and fixed-h
   assert.match(html, /data-mobile-view="results"/);
   assert.match(html, /data-mobile-input-section="company"/);
   assert.match(html, /data-mobile-analysis-section="attribution"/);
+  assert.match(html, /data-mobile-analysis-section="cash"/);
   assert.match(app, /ai-efficiency-calculator-mobile-ui-v1/);
   assert.match(app, /openInputSection:\s*"company"/);
-  assert.match(app, /openAnalysisSection:\s*"attribution"/);
+  assert.match(app, /openAnalysisSection:\s*"cash"/);
   assert.match(app, /mobileScrollPositions/);
   assert.match(app, /setMobileAccordion/);
   assert.match(app, /redrawVisibleCharts/);
@@ -349,6 +350,31 @@ test("mobile workspace uses persistent tabs, single-open accordions, and fixed-h
   );
   assert.match(css, /\.mobile-panel-hidden\s*\{[\s\S]*?display:\s*none !important/);
   assert.match(css, /\.is-mobile-open > \.mobile-accordion-content/);
+});
+
+test("primary output signals and simpler terminology are used across the UI", () => {
+  const html = fs.readFileSync("./index.html", "utf8");
+  const app = fs.readFileSync("./app.js", "utf8");
+  const i18n = fs.readFileSync("./i18n.js", "utf8");
+  const locales = fs.readFileSync("./locale-packs.js", "utf8");
+  const uiSource = [html, app, i18n, locales].join("\n");
+
+  assert.match(html, /class="hero-signal-grid"/);
+  assert.ok(html.indexOf('id="capacity-fte"') < html.indexOf('id="verdict-card"'));
+  assert.match(uiSource, /AI ROI after rollout/);
+  assert.match(uiSource, /AI 導入成熟後 ROI/);
+  assert.match(uiSource, /Theoretical released productivity/);
+  assert.match(uiSource, /理論可釋放生產力/);
+  assert.match(
+    i18n,
+    /AI 可能創造的產能高於已確認的市場需求，因此模型只把可驗證需求內的部分算成新增營收。/
+  );
+
+  assert.doesNotMatch(uiSource, /穩態/);
+  assert.doesNotMatch(uiSource, /Steady-state AI ROI/);
+  assert.doesNotMatch(uiSource, /Theoretical released time/);
+  assert.doesNotMatch(uiSource, /理論可釋放工時/);
+  assert.doesNotMatch(uiSource, /依產能推估/);
 });
 
 test("print layout expands mobile sections and ignores the active mobile panel", () => {
