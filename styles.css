@@ -1832,7 +1832,16 @@ canvas {
   }
 
   .hero-signal-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  }
+
+  .hero-signal-grid .metric,
+  .hero-signal-grid .verdict-card {
+    min-height: 150px;
+  }
+
+  .hero-signal-grid .metric strong {
+    font-size: 38px;
   }
 
   .native-comparison {

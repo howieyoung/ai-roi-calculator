@@ -372,12 +372,17 @@ test("primary output signals and simpler terminology are used across the UI", ()
   const app = fs.readFileSync("./app.js", "utf8");
   const i18n = fs.readFileSync("./i18n.js", "utf8");
   const locales = fs.readFileSync("./locale-packs.js", "utf8");
+  const css = fs.readFileSync("./styles.css", "utf8");
   const uiSource = [html, app, i18n, locales].join("\n");
 
   assert.match(html, /class="hero-signal-grid"/);
   assert.match(html, /RPE AND ROI SNAPSHOT/);
   assert.match(html, /Revenue density and AI return indicators/);
   assert.ok(html.indexOf('id="capacity-fte"') < html.indexOf('id="verdict-card"'));
+  assert.match(
+    css,
+    /@media \(max-width: 1120px\)[\s\S]*?\.hero-signal-grid\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0,\s*0\.95fr\)\s*minmax\(0,\s*1\.05fr\)/
+  );
   assert.doesNotMatch(
     html,
     /<article class="metric metric-primary">\s*<span class="output-label">\s*Current RPE/
