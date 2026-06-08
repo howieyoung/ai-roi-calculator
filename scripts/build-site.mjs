@@ -1,11 +1,11 @@
 import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
 import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outputDir = resolve(projectRoot, "dist");
-const assetVersion = "20260608-seo-security";
 const siteUrl = "https://www.all4.ai/";
 const siteName = "all4.ai";
 const siteTitle = "AI ROI Calculator - Is My Company Ready for Enterprise AI?";
@@ -23,6 +23,28 @@ const copyFiles = [
   "favicon.svg",
 ];
 const supportedLocales = ["en", "zh-TW", "ja", "fr", "es"];
+const sourceAssetVersion = "20260608-seo-security";
+const assetVersion = resolveAssetVersion();
+
+function resolveAssetVersion() {
+  const cloudflareCommit = process.env.CF_PAGES_COMMIT_SHA;
+  if (cloudflareCommit) return sanitizeAssetVersion(cloudflareCommit.slice(0, 12));
+
+  try {
+    const gitCommit = execFileSync("git", ["rev-parse", "--short=12", "HEAD"], {
+      cwd: projectRoot,
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    }).trim();
+    return sanitizeAssetVersion(gitCommit);
+  } catch {
+    return "local-build";
+  }
+}
+
+function sanitizeAssetVersion(value) {
+  return String(value).replace(/[^a-zA-Z0-9._-]/g, "") || "local-build";
+}
 
 function escapeAttribute(value) {
   return value
@@ -117,8 +139,12 @@ function buildHostedIndex(sourceHtml) {
     "  </body>",
     `    <script src="https://main.protico.io/api/v1/all4.ai/protico-frame.js"></script>\n  </body>`
   );
+  const withVersionedAssets = withProtico.replaceAll(
+    `?v=${sourceAssetVersion}`,
+    `?v=${assetVersion}`
+  );
 
-  return { html: withProtico, jsonLd };
+  return { html: withVersionedAssets, jsonLd };
 }
 
 function securityHeaders(jsonLd) {

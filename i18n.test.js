@@ -237,7 +237,8 @@ test("hosted build output injects SEO metadata, analytics, and security headers"
   const favicon = fs.readFileSync("./dist/favicon.svg", "utf8");
 
   assert.match(html, /<title>AI ROI Calculator - Is My Company Ready for Enterprise AI\?<\/title>/);
-  assert.match(html, /href="\.\/favicon\.svg\?v=20260608-seo-security"/);
+  assert.match(html, /href="\.\/favicon\.svg\?v=[a-zA-Z0-9._-]+"/);
+  assert.doesNotMatch(html, /20260608-seo-security/);
   assert.doesNotMatch(html, /AI Organization Economics Calculator/);
   assert.match(html, /<link rel="canonical" href="https:\/\/www\.all4\.ai\/" \/>/);
   assert.match(html, /property="og:title" content="AI ROI Calculator - Is My Company Ready for Enterprise AI\?"/);
@@ -252,7 +253,7 @@ test("hosted build output injects SEO metadata, analytics, and security headers"
   assert.match(html, /type="application\/ld\+json"/);
   assert.match(html, /"@type":"WebApplication"/);
   assert.match(html, /googletagmanager\.com\/gtag\/js\?id=G-H7E29MBGZ6/);
-  assert.match(html, /\.\/analytics\.js\?v=20260608-seo-security/);
+  assert.match(html, /\.\/analytics\.js\?v=[a-zA-Z0-9._-]+/);
   assert.match(html, /https:\/\/main\.protico\.io\/api\/v1\/all4\.ai\/protico-frame\.js/);
 
   assert.match(analytics, /G-H7E29MBGZ6/);
