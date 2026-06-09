@@ -1746,6 +1746,18 @@ function render() {
   verdict.className = `verdict verdict-${result.verdictClass}`;
   const verdictCard = element("verdict-card");
   verdictCard.className = `verdict-card verdict-card-${result.verdictClass}`;
+  const requiredRevenueGap = result.requiredGrowth * values.revenue;
+  element("verdict-revenue-label").textContent = t("verdict.revenue.label");
+  element("verdict-revenue").textContent =
+    formatMoneyMillions(requiredRevenueGap);
+  element("verdict-revenue-note").textContent =
+    Number.isFinite(result.requiredGrowth) && result.requiredGrowth > 0
+      ? t("verdict.revenue.note", {
+          growth: formatPercent(result.requiredGrowth),
+        })
+      : Number.isFinite(result.requiredGrowth)
+        ? t("verdict.revenue.none")
+        : t("verdict.revenue.unavailable");
   element("verdict-note").textContent = t(`verdict.note.${result.verdictClass}`);
 
   const warning = element("model-warning");
